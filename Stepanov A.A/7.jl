@@ -10,7 +10,7 @@ module ShessMark
 
     FLAG_MARK = nothing
 
-    function mark_chess(r)
+    unction mark_chess(r)
         global FLAG_MARK 
         # Глобальные переменные, ввиду их особой важности, следует именовать заглаными буквами. 
         # Объявление переменной как global требуется, только если ее значение ИЗМЕНЯЕТСЯ в теле функции, 
@@ -20,7 +20,6 @@ module ShessMark
         num_vert = move!(r,Sud)
         #УТВ: Робот - в юго-западном углу
         FLAG_MARK = odd(num_hor+num_vert) ? true : false
-        # значение FLAG_MARK определяет, нужно ли в юго-западном углу ставить маркер
 
         side = Ost
         mark_chess(r,side)
@@ -29,14 +28,11 @@ module ShessMark
             side = inverse(side)
             mark_chess(r,side)
         end
-        #УТВ: Робот - у северной границы поля И маркеры расставлены в шахматном порядке
 
         for side in (West,Sud) moves!(r,side) end
-        #УТВ: Робот - в юго-западном углу
-
+     
         move!(r,Ost,num_hor)
         move!(r,Nord,num_vert)
-        #УТВ: Робот - в исходном положении
     end
     function mark_chess(r,side)
         global FLAG_MARK
