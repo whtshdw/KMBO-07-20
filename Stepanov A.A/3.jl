@@ -34,6 +34,6 @@ function putmarkers!(r::Robot,side::HorizonSide)
 end
 function move_to_wall!(r::Robot,side::HorizonSide)
      while isborder(r,side)==false
-        move!(r,sid)
+        move!(r,side)
     
 inverse(side::HorizonSide)=HorizonSide(mod(Int(side)+2,4))
