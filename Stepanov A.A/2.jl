@@ -2,7 +2,6 @@ function mark_frame_perimetr!(r::Robot)
     num_vert = moves!(r, Sud)
     num_hor = moves!(r, West)
     for sidе in (HorizonSide(i) i=0:3)
-        while isborder(r,side)==false
             putmarkers!(r,side)
         end
     end
@@ -25,9 +24,6 @@ end
 function putmarkers!(r::Robot, side::HorizonSide)
     while isborder(r,side)==false
         move!(r,side)
-        putmarker!(r)
-    end
-    if isborder(r,side)==true
         putmarker!(r)
     end
 end
