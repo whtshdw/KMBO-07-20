@@ -1,7 +1,7 @@
 function mark_treugol!(r::Robot)
     num_vert = moves_end!(r, Sud)
     num_hor = moves_end!(r, West)
-    h = 
+    h = 0
     i = (moves_end!(r,Nord))
     moves!(r,Sud)
     j = (moves_end!(r,Ost) - 1)
