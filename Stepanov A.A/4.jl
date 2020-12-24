@@ -1,20 +1,24 @@
 function mark_triangle!(r::Robot)
-    move_left_angle!(r)
+    num_vert = moves!(r, Sud)
+    num_hor = moves!(r, West)
     lenght = moves!(r, Ost)
     hight = moves!(r, Nord)
     move_left_angle!(r)
-    j=lenght+1
+    p=lenght+1
         for i in 1:hight
-            while j-i != 0
+            while p-i != 0
                 putmarker!(r)
                 move!(r,Ost)
-                j-=1
+                p-=1
             end
             putmarker!(r)
-            j=lenght+1
-            back(r)
+            p=lenght+1
+            go_back!(r)
             move!(r,Nord)
         end
+    move_left_angle!(r)
+    moves!(r, Nord, num_vert)
+    moves!(r, Ost, num_hor)
 end    
 function move_left_angle!(r::Robot)
     for side in (Sud, West)
@@ -31,7 +35,7 @@ function moves!(r::Robot,side::HorizonSide)
     end
     return num_steps
 end
-function go_back(r::Robot)
+function go_back!(r::Robot)
     while isborder(r,West) == false
         move!(r,West)
     end
