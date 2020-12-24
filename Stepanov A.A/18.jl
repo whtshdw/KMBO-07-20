@@ -1,4 +1,4 @@
-unction mark_ugol!(r::Robot)
+function mark_ugol!(r::Robot)
     num_vert,num_hor = ugol(r)
     for side in (Nord,Ost,Sud,West)
         moves!(r,side)
