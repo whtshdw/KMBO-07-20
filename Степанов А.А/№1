@@ -1,1 +1,3 @@
-for side in (Nord,West,Sud,Ost)
+mutable struct moveSide
+      r::Robot
+      side::HorizonSide
