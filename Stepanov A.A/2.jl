@@ -1,7 +1,7 @@
 function mark_frame_perimetr!(r::Robot)
     num_vert = moves!(r, Sud)
     num_hor = moves!(r, West)
-    for sidе in (HorizonSide(i) i=0:3)
+    for sidе in (DirectionsOfMovement(i) i=0:3)
             putmarkers!(r,side)
         end
     end
