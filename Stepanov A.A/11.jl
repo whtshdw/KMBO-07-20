@@ -1,6 +1,5 @@
-function mark_centers(r)
+unction mark_centers(r)
     num_steps = through_rectangles_into_angle(r,(Sud,West))
-    # УТВ: Робот - в юго-западном углу и в num_steps - закодирован пройденный путь
     num_steps_to_ost = sum(num_steps[1:2:end])
     num_steps_to_nord = sum(num_steps[2:2:end])
 
@@ -15,14 +14,12 @@ function mark_centers(r)
 
     movements!(r,Sud,num_steps_to_sud)
     putmarker!(r)
-    movements!(r,Sud) # возвращаемое значение игнорируется
+    movements!(r,Sud)
 
     movements!(r,Sud,num_steps_to_west)
     putmarker!(r)
-    movements!(r,Sud) # возвращаемое значение игнорируется
-    # УТВ: Маркеры поставлены и Робот - в юго-западном углу
-    #-------------------
+    movements!(r,Sud)
 
     movements!(r,(Ost,Nord),num_steps)
-    #УТВ: Робот - в исходном положении
+
 end
