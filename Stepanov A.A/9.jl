@@ -1,4 +1,4 @@
-unction find_marker(r)
+function find_marker(r)
     num_steps_max=1
     side=Nord
     while ismarker(r)==false
