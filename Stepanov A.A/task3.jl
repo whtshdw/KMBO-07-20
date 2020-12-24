@@ -2,16 +2,14 @@ function mark_all!(r::Robot)
     num_vert = moves!(r, Sud)
     num_hor = moves!(r, West)
     side = Ost
+    while isborder(r,Nord)==false
+        putmarkers!(r,side)
+        move!(r,Nord)
+        side=inverse(side)
+    end
     putmarkers!(r,side)
-    while isborder(r,Nord)==false    
-        if isborder(r,side)==true
-            side = inverse(side)
-            putmarkers!(r,side)
-        end
-    end  
-    putmarkers_last!(r,Ost)
-    moves!(r, West)
-    moves!(r, Sud)
+    move_to_wall!(r, Sud)
+    move_to_wall!(r, West)
     moves!(r, Nord, num_vert)
     moves!(r, Ost, num_hor)
 end
@@ -33,14 +31,9 @@ function putmarkers!(r::Robot,side::HorizonSide)
         putmarker!(r) 
         move!(r,side)
     end
-    putmarker!(r)
-    move!(r,Nord)
 end
-function putmarkers_last!(r::Robot,side::HorizonSide)
-    while isborder(r,side)==false
-        putmarker!(r) 
+function move_to_wall!(r::Robot,side::HorizonSide)
+     while isborder(r,side)==false
         move!(r,side)
-    end
-    putmarker!(r)
-end
+    
 inverse(side::HorizonSide)=HorizonSide(mod(Int(side)+2,4))
