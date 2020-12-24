@@ -1,4 +1,4 @@
-unction find_passage(r::Robot)
+function find_passage(r::Robot)
     n=0; 
     side=Ost
     while isborder(r,Nord)==true 
