@@ -1,3 +1,0 @@
-mutable struct moveSide
-      r::Robot
-      side::HorizonSide
