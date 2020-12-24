@@ -1,4 +1,4 @@
-unction mark_frame_perimetr!(r::Robot)
+function mark_frame_perimetr!(r::Robot)
     num_vert,num_hor = ugol(r)
     for side in (Nord,Ost,Sud,West)
         while isborder(r,side)==false
