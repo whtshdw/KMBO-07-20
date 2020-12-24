@@ -1,4 +1,4 @@
-function mark_treugol!(r::Robot)
+unction mark_treugol!(r::Robot)
     num_vert = moves_end!(r, Sud)
     num_hor = moves_end!(r, West)
     h = 0
