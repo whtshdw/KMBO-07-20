@@ -1,4 +1,4 @@
-unction mark_cross!(r::Robot)
+function mark_cross!(r::Robot)
     for side in (Nord,Ost,Sud,West)
         putmarkers!(r,side)
         if isborder(r,side)==true && isborder(r,next(side))==false
