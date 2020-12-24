@@ -1,4 +1,4 @@
-function mark_angle(r)
+function mark_angles(r)
     num_steps=[]
     while isborder(r,Sud)==false || isborder(r,West)
         push!(num_steps, moves!(r, West))
