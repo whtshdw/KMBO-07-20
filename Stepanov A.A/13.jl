@@ -1,4 +1,4 @@
-unction mark_cross!(r::Robot)
+function mark_cross!(r::Robot)
     for side in((Nord,Ost),(West,Sud),(Nord,West),(Sud,Ost)) 
         putmarkers!(r,side)
         side_inv=inverse(side)
