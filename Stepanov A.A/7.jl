@@ -10,7 +10,7 @@ module ShessMark
 
     FLAG_MARK = nothing
 
-    unction mark_chess(r)
+    function mark_chess(r)
         global FLAG_MARK 
         # Глобальные переменные, ввиду их особой важности, следует именовать заглаными буквами. 
         # Объявление переменной как global требуется, только если ее значение ИЗМЕНЯЕТСЯ в теле функции, 
