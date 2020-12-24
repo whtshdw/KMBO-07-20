@@ -1,4 +1,3 @@
-
 using HorizonSideRobots
 #=
 Модуль HorizonSideRobots экспортирует перечисление HorizonSide, содержащее символы Nord, Sud, Ost, West,  и определения следующих функций:
