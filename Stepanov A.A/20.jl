@@ -1,4 +1,4 @@
-unction num_borders(r::Robot)
+function num_borders(r::Robot)
     side = Ost
     num=0
     while isborder(r,Nord)==false
