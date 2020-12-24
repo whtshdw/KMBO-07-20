@@ -1,5 +1,5 @@
 function mark_cross!(r::Robot)
-    for side in (HorizonSide(i) for i=0:3)
+    for side in (HorizonSide(i) i=0:3)
         putmarkers!(r,side)
         move_by_markers!(r,inverse(side))
     end
