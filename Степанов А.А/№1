@@ -1,0 +1,1 @@
+inverse (origSide :: HorizonSide ) =  HorizonSide ( mod ( Int (origSide) +  2 , 4 ))
