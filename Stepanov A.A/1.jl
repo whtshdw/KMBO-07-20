@@ -1,8 +1,7 @@
 function mark_cross!(r::Robot)
-    for side in(Nord,West,Sud,Ost)
+    for side in (HorizonSide(i) for i=0:3)
         putmarkers!(r,side)
-        side_inv=inverse(side)
-        move_by_marker!(r,side_inv)
+        move_by_markers!(r,inverse(side))
     end
 putmarker!(r)
 end
@@ -12,7 +11,7 @@ function putmarkers!(r::Robot,side::HorizonSide)
         putmarker!(r)
     end
 end
-function move_by_marker!(r::Robot,side::HorizonSide)
+function move_by_markers!(r::Robot,side::HorizonSide)
     while ismarker(r)==true
         move!(r,side)
     end
