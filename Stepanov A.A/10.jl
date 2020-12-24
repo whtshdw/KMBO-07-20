@@ -1,4 +1,4 @@
-unction sum_temp(r::Robot)
+function sum_temp(r::Robot)
     sum = 0 
     count = 0
     side = Ost
