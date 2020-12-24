@@ -1,4 +1,4 @@
-function mark_all!(r::Robot)
+unction mark_all!(r::Robot)
     num_vert,num_hor = ugol(r)
     side = Ost
     num_steps = moves!(r,Ost)
