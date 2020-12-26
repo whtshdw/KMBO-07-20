@@ -1,8 +1,5 @@
 module Decart
     using HorizonSideRobots
-#=
-Предполагается, что в пространстве имен Main определена функция inverse, например, путем вставки из файла "roblib.jl"
-=#
     export init, move!, get_coord
 
     X_COORDINATE=0
@@ -29,24 +26,12 @@ module Decart
     end
 
     det_coord()=( X_COORD, Y_COORD)
-end # module
+end
 
 
 using .Decart
 
-
-#=
-Теперь модуль Decart, можно испоьзовать, например, так:
-
-    Decart.init()
-    r = Robot()
-    Decart.move!(r,Nord)
-    x,y = Decart.get_coord()
-=#
- 
-
 function mark_chess(r::Robot,n::Int)
-    #УТВ: Робот - в юго-западном углу
     Decart.init()
     side=Ost
     mark_row(r,side,n)
@@ -64,7 +49,6 @@ function mark_row(r::Robot,size::HorizonSide, n::Integer)
         putmarker_chess!(r,n)
     end
 end
-
 
 function putmarker_chess!(r::Robot,n::Integer)
     x,y = Decart.get_coord()
