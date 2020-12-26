@@ -1,101 +1,45 @@
-function mark_all!(r::Robot)
-    num_vert,num_hor = ugol(r)
-    side = Ost
-    num_steps = moves!(r,Ost)
+function mark_all_field(r)
+    side=Ost
+    mark_row(r,side)
+    while isborder(r,side)==false
+        move!(r,Nord)
+        side=inverse(side)
+        mark_row(r,side)
+    end
+end
+
+function mark_row(r::Robot,side::HorizonSide)
+    putmarker!(r)
+    while move_if_posible!(r,side) == true
+        putmarker!(r)
+    end
+end
+function move_if_possible!(r::Robot, direct_side::HorizonSide)::Bool
+        orthogonal_side = next(direct_side)
+        reverse_side = reverse(orthogonal_side)
+        num_steps=0
+        while isborder(direct_side) == true
+            if isborder(r, orthogonal_side) == false
+                move(r, orthogonal_side)
+                num_steps += 1
+            else
+                break
+            end
+        end
+
+        if isborder(r,direct_side) == false
+            while isborder(r,reverse_side) == true
+                move!(r,direct_side)
+            end
+            result = true
+        else
+            result = false
+        end
+        move!(r,reverse_side)
+        return result
+    end
+
+    movements!(r::Robot, side::HorizonSide, num_steps::Int) =
     for _ in 1:num_steps
-        move!(r,West)
+        move_if_posible!(r,side)
     end
-    putmarkers!(r,side,num_steps)
-    while isborder(r,Nord)==false    
-        if isborder(r,side)==true
-            side = inverse(side)
-            putmarkers!(r,side,num_steps)
-        end
-    end  
-    putmarkers_last!(r,Ost)
-    moves!(r, West)
-    moves!(r, Sud)
-    moves!(r, Ost, num_hor)
-    moves1!(r, Nord, num_vert)
-end
-function moves!(r::Robot,side::HorizonSide)
-    num_steps=0
-    while isborder(r,side)==false
-        move!(r,side)
-        num_steps+=1
-    end
-    return num_steps
-end
-function moves1!(r::Robot,side::HorizonSide,num_steps::Int)
-    q=0
-    while q<num_steps 
-        if isborder(r,Nord)==true
-            while isborder(r,side)==true
-                move!(r,Ost)
-            end
-            move!(r,Nord)
-            q+=1
-            if isborder(r,West)==true
-                while isborder(r,West)==true
-                    move!(r,Nord)
-                    q+=1
-                end
-            end
-            move!(r,West)
-        end
-        if q<num_steps
-        move!(r,side)
-        q+=1
-        end
-    end
-end
-function moves!(r::Robot,side::HorizonSide,num_steps::Int)
-    for _ in 1:num_steps # символ "_" заменяет фактически не используемую переменную
-        move!(r,side)
-    end
-end
-function putmarkers!(r::Robot,side::HorizonSide,num_steps::Int)
-    q=0
-    while q<num_steps
-        k=0
-       putmarker!(r)
-       if isborder(r,side)==false
-            move!(r,side)
-            q+=1
-       else isborder(r,side)==true
-            while isborder(r,side)==true
-                move!(r,Nord)
-                k+=1
-            end
-            move!(r,side)
-            q+=1
-            if isborder(r,Sud)==true
-                move!(r,side)
-                q+=1
-            end
-            for _ in 1:k
-                move!(r,Sud)
-            end            
-       end
-    end
-    putmarker!(r)
-    move!(r,Nord)
-end
-function putmarkers_last!(r::Robot,side::HorizonSide)
-    while isborder(r,side)==false
-        putmarker!(r) 
-        move!(r,side)
-    end
-    putmarker!(r)
-end
-function ugol(r::Robot)
-    num_vert=0
-    num_hor=0
-    while (isborder(r,Sud)==false || isborder(r,West)==false)
-        num_vert+= moves!(r, Sud)
-        num_hor+= moves!(r, West)
-        repeat
-    end
-    return num_vert,num_hor
-end
-inverse(side::HorizonSide)=HorizonSide(mod(Int(side)+2,4))
