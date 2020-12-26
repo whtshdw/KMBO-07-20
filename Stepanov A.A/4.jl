@@ -35,6 +35,11 @@ function moves!(r::Robot,side::HorizonSide)
     end
     return num_steps
 end
+function moves!(r::Robot,side::HorizonSide,num_steps::Int)
+    for _ in 1:num_steps
+        move!(r,side)
+    end
+end
 function go_back!(r::Robot)
     while isborder(r,West) == false
         move!(r,West)
