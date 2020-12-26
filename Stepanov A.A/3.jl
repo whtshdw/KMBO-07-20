@@ -22,7 +22,7 @@ function moves!(r::Robot,side::HorizonSide)
     return num_steps
 end
 function moves!(r::Robot,side::HorizonSide,num_steps::Int)
-    for _ in 1:num_steps # символ "_" заменяет фактически не используемую переменную
+    for _ in 1:num_steps
         move!(r,side)
     end
 end
