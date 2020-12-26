@@ -1,11 +1,14 @@
 function find_passage(r::Robot)
-    n=0; 
     side=Ost
-    while isborder(r,Nord)==true 
-        n+=1
-        moves!(r,side,n)
+    while isborder(r,Nord)==true
+        putmarker!(r)
+        move_by_markers!(r,side)
         side=inverse(side)
     end
 end
-moves!(r,side,num_steps)=for _ in 1:num_steps move!(r,side) end
-inverse(side::HorizonSide)=HorizonSide(mod(Int(side)+2,4))
+function move_by_markers!(r,side)
+    while ismarker(r)
+        move!(r,side) 
+    end
+end    
+inverse(side::HorizonSide) = HorizonSide(mod(Int(side)+2,4))
