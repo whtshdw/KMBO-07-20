@@ -6,7 +6,7 @@ module Decart
     Y_COORDINATE=0
 
     function init(x=0,y=0)
-        global X_COORD, Y_COORD
+        global X_COORD,Y_COORD
         X_COORD=0
         Y_COORD=0
     end
